@@ -11,4 +11,10 @@ describe("Stack", () => {
     const size = stack.getSize();
     expect(size).toBe(0);
   });
+
+  it("allows push item", () => {
+    stack.push("first item");
+    const size = stack.getSize();
+    expect(size).toBe(1);
+  });
 });
