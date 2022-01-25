@@ -1,10 +1,11 @@
-import Stack, { StackImpl } from "../stack";
+import { StackNodeImpl } from "../stack_node";
+import Stack from "../stack";
 
 describe("Stack", () => {
-  let stack: Stack;
+  let stack: Stack<String>;
 
   beforeEach(() => {
-    stack = new StackImpl();
+    stack = new StackNodeImpl();
   });
 
   it("is created empty", () => {
@@ -53,6 +54,18 @@ describe("Stack", () => {
       expect(sizeAfterStacked).toBe(2);
       expect(item).toBe("second item");
       expect(sizeAfterPopped).toBe(2);
+    });
+  });
+
+  describe("set type with generic", () => {
+    it("receives only declarated type of item", () => {
+      let stack: Stack<number> = new StackNodeImpl();
+      stack.push(1);
+      // stack.push("2");
+
+      const item = stack.peek();
+
+      expect(typeof item).toBe("number");
     });
   });
 });
